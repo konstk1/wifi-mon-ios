@@ -13,11 +13,17 @@ import SystemConfiguration.CaptiveNetwork
 class TodayViewController: UIViewController, NCWidgetProviding {
         
     @IBOutlet weak var wifiSsidLabel: UILabel!
+    @IBOutlet weak var wifiBssidLabel: UILabel!
+    @IBOutlet weak var wifiIconImageView: UIImageView!
+    
+    var interface: CFString?
+    var isWifiConnected = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view from its nib.
         
+        print("View loaded")
         wifiSsidLabel.text = "Not connected"
         
         guard let interfaces = CNCopySupportedInterfaces() as? [CFString] else {
@@ -30,17 +36,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             return
         }
         
-        guard let interfaceInfo = CNCopyCurrentNetworkInfo(interface) as? [String:AnyObject] else {
-            print("Failed to get \(interface) info")
-            return
-        }
-        
-        guard let wifiSsid = interfaceInfo[kCNNetworkInfoKeySSID as String] as? String else {
-            print("Failed to get SSID")
-            return
-        }
-        
-        wifiSsidLabel.text = wifiSsid
+        self.interface = interface
     }
     
     override func didReceiveMemoryWarning() {
@@ -55,7 +51,36 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         // If there's no update required, use NCUpdateResult.NoData
         // If there's an update, use NCUpdateResult.NewData
         
+        print("Perform update")
+        
+        let (ssid, bssid) = getWifiInfo()
+        
+        if isWifiConnected {
+            wifiSsidLabel.text = ssid
+            wifiBssidLabel.text = bssid
+            wifiIconImageView.image = UIImage(named: "wifi")
+        } else {
+            wifiSsidLabel.text = "Not connected"
+            wifiBssidLabel.text = ""
+            wifiIconImageView.image = UIImage(named: "wifi none")
+        }
+        
         completionHandler(NCUpdateResult.newData)
+    }
+    
+    func getWifiInfo() -> (ssid: String?, bssid: String?) {
+        guard let interface = interface, let interfaceInfo = CNCopyCurrentNetworkInfo(interface) as? [String:AnyObject] else {
+            print("Failed to get interface info")
+            isWifiConnected = false
+            return (nil, nil)
+        }
+        
+        isWifiConnected = true
+        let ssid = interfaceInfo[kCNNetworkInfoKeySSID as String] as? String
+        let bssid = interfaceInfo[kCNNetworkInfoKeyBSSID as String] as? String
+        
+        return (ssid, bssid)
+
     }
     
 }

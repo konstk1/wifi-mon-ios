@@ -17,6 +17,7 @@
 		FF882A701E40FE0F003BF874 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF882A6F1E40FE0F003BF874 /* TodayViewController.swift */; };
 		FF882A731E40FE0F003BF874 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF882A711E40FE0F003BF874 /* MainInterface.storyboard */; };
 		FF882A771E40FE0F003BF874 /* Wifi Mon Ext.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FF882A6A1E40FE0F003BF874 /* Wifi Mon Ext.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		FFB510E61E42577100212FEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFB510E51E42577100212FEF /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		FF882A6F1E40FE0F003BF874 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		FF882A721E40FE0F003BF874 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		FF882A741E40FE0F003BF874 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FFB510E51E42577100212FEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 				FF882A6F1E40FE0F003BF874 /* TodayViewController.swift */,
 				FF882A711E40FE0F003BF874 /* MainInterface.storyboard */,
 				FF882A741E40FE0F003BF874 /* Info.plist */,
+				FFB510E51E42577100212FEF /* Assets.xcassets */,
 			);
 			path = "Wifi Mon Ext";
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFB510E61E42577100212FEF /* Assets.xcassets in Resources */,
 				FF882A731E40FE0F003BF874 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -461,6 +465,7 @@
 				FF882A651E40FDDD003BF874 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FF882A781E40FE0F003BF874 /* Build configuration list for PBXNativeTarget "Wifi Mon Ext" */ = {
 			isa = XCConfigurationList;
@@ -469,6 +474,7 @@
 				FF882A7A1E40FE0F003BF874 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
