@@ -15,6 +15,11 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     @IBOutlet weak var wifiSsidLabel: UILabel!
     @IBOutlet weak var wifiBssidLabel: UILabel!
     @IBOutlet weak var wifiIconImageView: UIImageView!
+    @IBOutlet weak var pingLabel: UILabel!
+    
+    var pinger: SimplePing?
+    var pingTimer: Timer?
+    var pingStartTime = Date()
     
     var interface: CFString?
     var isWifiConnected = false
@@ -37,6 +42,18 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         }
         
         self.interface = interface
+        
+        pinger = SimplePing(hostName: "www.google.com")
+        pinger!.delegate = self
+        pinger!.start()
+        
+        pingLabel.text = "..."
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        pinger?.stop()
+        pingTimer?.invalidate()
+        print("Stopping")
     }
     
     override func didReceiveMemoryWarning() {
@@ -83,4 +100,29 @@ class TodayViewController: UIViewController, NCWidgetProviding {
 
     }
     
+    func performPing() {
+        if isWifiConnected {
+            pinger?.send(with: nil)
+        }
+    }
+}
+
+extension TodayViewController: SimplePingDelegate {
+    func simplePing(_ pinger: SimplePing, didStartWithAddress address: Data) {
+        performPing()
+        pingTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [unowned self](timer) in
+            self.performPing()
+        }
+    }
+    
+    func simplePing(_ pinger: SimplePing, didSendPacket packet: Data, sequenceNumber: UInt16) {
+        pingStartTime = Date()
+    }
+    
+    func simplePing(_ pinger: SimplePing, didReceivePingResponsePacket packet: Data, sequenceNumber: UInt16) {
+        let pingEndTime = Date()
+        let pingTime = pingEndTime.timeIntervalSince(pingStartTime)
+        
+        pingLabel.text = "\(Int(pingTime * 1000)) ms"
+    }
 }

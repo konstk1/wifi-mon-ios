@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF6F91811E48CB8200B3D932 /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6F91801E48CB8200B3D932 /* SimplePing.m */; };
+		FF6F91821E48CB8200B3D932 /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6F91801E48CB8200B3D932 /* SimplePing.m */; };
 		FF882A531E40FDDD003BF874 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF882A521E40FDDD003BF874 /* AppDelegate.swift */; };
 		FF882A551E40FDDD003BF874 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF882A541E40FDDD003BF874 /* FirstViewController.swift */; };
 		FF882A571E40FDDD003BF874 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF882A561E40FDDD003BF874 /* SecondViewController.swift */; };
@@ -45,6 +47,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		FF6F917F1E48CB8200B3D932 /* SimplePing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePing.h; sourceTree = "<group>"; };
+		FF6F91801E48CB8200B3D932 /* SimplePing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePing.m; sourceTree = "<group>"; };
+		FF6F91861E48CBFB00B3D932 /* WiFiMon-BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WiFiMon-BridgingHeader.h"; sourceTree = "<group>"; };
 		FF882A4F1E40FDDD003BF874 /* WiFi Mon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WiFi Mon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF882A521E40FDDD003BF874 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF882A541E40FDDD003BF874 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -80,9 +85,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF6F917E1E48CB8200B3D932 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				FF6F917F1E48CB8200B3D932 /* SimplePing.h */,
+				FF6F91801E48CB8200B3D932 /* SimplePing.m */,
+				FF6F91861E48CBFB00B3D932 /* WiFiMon-BridgingHeader.h */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		FF882A461E40FDDD003BF874 = {
 			isa = PBXGroup;
 			children = (
+				FF6F917E1E48CB8200B3D932 /* Common */,
 				FF882A511E40FDDD003BF874 /* WiFi Mon */,
 				FF882A6E1E40FE0F003BF874 /* Wifi Mon Ext */,
 				FF882A6B1E40FE0F003BF874 /* Frameworks */,
@@ -252,6 +268,7 @@
 				FF882A571E40FDDD003BF874 /* SecondViewController.swift in Sources */,
 				FF882A531E40FDDD003BF874 /* AppDelegate.swift in Sources */,
 				FF882A551E40FDDD003BF874 /* FirstViewController.swift in Sources */,
+				FF6F91811E48CB8200B3D932 /* SimplePing.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF882A701E40FE0F003BF874 /* TodayViewController.swift in Sources */,
+				FF6F91821E48CB8200B3D932 /* SimplePing.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +364,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "Common/WiFiMon-BridgingHeader.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -387,6 +406,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Common/WiFiMon-BridgingHeader.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
